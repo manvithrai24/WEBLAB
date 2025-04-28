@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>mixUp Function</title>
+</head>
+<body>
+
+  <script>
+    function mixUp(str1, str2) {
+      // Extract the first two characters of each string
+      const str1FirstTwo = str1.slice(0, 2);
+      const str2FirstTwo = str2.slice(0, 2);
+
+      // Extract the rest of each string
+      const str1Rest = str1.slice(2);
+      const str2Rest = str2.slice(2);
+
+      // Concatenate and swap the first two characters
+      const mixedString1 = str2FirstTwo + str1Rest;
+      const mixedString2 = str1FirstTwo + str2Rest;
+
+      // Return the combined string with a space
+      return mixedString1 + ' ' + mixedString2;
+    }
+
+    // Example usage:
+    const result1 = mixUp('mix', 'pod');
+    console.log(`mixUp('mix', 'pod'): '${result1}'`); // Output: mixUp('mix', 'pod'): 'pox mid'
+
+    const result2 = mixUp('dog', 'dinner');
+    console.log(`mixUp('dog', 'dinner'): '${result2}'`); // Output: mixUp('dog', 'dinner'): 'dig donner'
+  </script>
+
+</body>
+</html>

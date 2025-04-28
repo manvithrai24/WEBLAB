@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script lab Exercises-1</title>
+</head>
+<body>
+    <h3>Java Script lab Exercises-1</h3>
+
+    <h4>Q1. Define a function max() that takes two numbers as arguments from user and returns the largest of them. Use the if-then-else construct available in Javascript.</h4>
+    <input type="text" id="num1" placeholder="Enter first number">
+    <input type="text" id="num2" placeholder="Enter second number">
+    <button onclick="max({$num1},{$num2})">Find the largest number</button>
+    <p id="result1"></p>
+    <script>
+        function max() {
+            if (num1 > num2) {
+                document.getElementById("result1").innerHTML = "The largest number is: " + num1;
+            } else {
+                document.getElementById("result1").innerHTML = "The largest number is: " + num2;
+            }
+        }
+    </script>
+
+    <h4>Q2. Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.</h4>
+    <input type="text" id="num3" placeholder="Enter first number">
+    <input type="text" id="num4" placeholder="Enter second number">
+    <input type="text" id="num5" placeholder="Enter third number">
+    <button onclick="maxOfThree()">Find the largest number</button>
+    <p id="result2"></p>
+    <script>
+        function maxOfThree() {
+            var num3 = parseInt(document.getElementById("num3").value);
+            var num4 = parseInt(document.getElementById("num4").value);
+            var num5 = parseInt(document.getElementById("num5").value);
+            if (num3 > num4 && num3 > num5) {
+                document.getElementById("result2").innerHTML = "The largest number is: " + num3;
+            } else if (num4 > num3 && num4 > num5) {
+                document.getElementById("result2").innerHTML = "The largest number is: " + num4;
+            } else {
+                document.getElementById("result2").innerHTML = "The largest number is: " + num5;
+            }
+        }
+    </script>
+
+    <h4>Q3. Write a function isVowel() that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.</h4>
+    <input type="text" id="char" placeholder="Enter a character">
+    <button onclick="isVowel()">Check if it is a vowel</button>
+    <p id="result3"></p>
+    <script>
+        function isVowel() {
+            var char = document.getElementById("char").value;
+            if (char == "a" || char == "e" || char == "i" || char == "o" || char == "u") {
+                document.getElementById("result3").innerHTML = "The character is a vowel";
+            } else {
+                document.getElementById("result3").innerHTML = "The character is not a vowel";
+            }
+        }
+    </script>
+
+    <h4>Q4. Write a function translate() that will translate a text into "rövarspråket". That is, double every consonant and place an occurrence of "o" in between. For example, translate("this is fun") should return the string "tothohisos isos fofunon".</h4>
+    <input type="text" id="text4" placeholder="Enter a text">
+    <button onclick="translate()">Translate the text</button>
+    <p id="result4"></p>
+    <script>
+        function translate() {
+            var text = document.getElementById("text4").value;
+            var text1 = text.split("");
+            var text2 = "";
+            for (var i = 0; i < text1.length; i++) {
+                if (text1[i] == "a" || text1[i] == "e" || text1[i] == "i" || text1[i] == "o" || text1[i] == "u" || text1[i] == " ") {
+                    text2 += text1[i];
+                } else {
+                    text2 += text1[i] + "o" + text1[i];
+                }
+            }
+            document.getElementById("result4").innerHTML = "The translated text is: " + text2;
+        }
+    </script>
+
+    <h4>Q5. Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in an array of numbers. For example, sum([1,2,3,4]) should return 10, and multiply([1,2,3,4]) should return 24.</h4>
+    <input type="text" id="numbers" placeholder="Enter numbers separated by commas">
+    <button onclick="sum()">Find the sum</button>
+    <button onclick="multiply()">Find the product</button>
+    <p id="result5"></p>
+    <script>
+        function sum() {
+            var numbers = document.getElementById("numbers").value;
+            var numbers1 = numbers.split(",");
+            var sum = 0;
+            for (var i = 0; i < numbers1.length; i++) {
+                sum += parseInt(numbers1[i]);
+            }
+            document.getElementById("result5").innerHTML = "The sum of the numbers is: " + sum;
+        }
+        function multiply() {
+            var numbers = document.getElementById("numbers").value;
+            var numbers1 = numbers.split(",");
+            var product = 1;
+            for (var i = 0; i < numbers1.length; i++) {
+                product *= parseInt(numbers1[i]);
+            }
+            document.getElementById("result5").innerHTML = "The product of the numbers is: " + product;
+        }
+    </script>
+
+    <h4>Q6. Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".</h4>
+    <input type="text" id="str" placeholder="Enter a string">
+    <button onclick="reverse()">Reverse the string</button>
+    <p id="result6"></p>
+    <script>
+        function reverse() {
+            var str = document.getElementById("str").value;
+            var str1 = str.split("");
+            var str2 = str1.reverse();
+            var str3 = str2.join("");
+            document.getElementById("result6").innerHTML = "The reversed string is: " + str3;
+        }
+    </script>
+
+    <h4>Q7. Represent a small bilingual lexicon as a Javascript object in the following fashion {"merry":"god", "christmas":"jul", "and":"och", "happy":gott", "new":"nytt", "year":"år"} and use it to translate your Christmas cards from English into Swedish.</h4>
+    <input type="text" id="word" placeholder="Enter a word in English">
+    <button onclick="translateWord()">Translate the word</button>
+    <p id="result7"></p>
+    <script>
+        function translateWord() {
+            var lexicon = {
+                "merry": "god",
+                "christmas": "jul",
+                "and": "och",
+                "happy": "gott",
+                "new": "nytt",
+                "year": "år"
+            };
+            var word = document.getElementById("word").value;
+            var word1 = word.split(" ");
+            var translated = "";
+            for (var i = 0; i < word1.length; i++) {
+                if (lexicon[word1[i]]) {
+                    translated += lexicon[word1[i]] + " ";
+                } else {
+                    translated += word1[i] + " ";
+                }
+            }
+            document.getElementById("result7").innerHTML = "The translated word is: " + translated;
+        }
+    </script>
+
+    <h4>Q8. Write a function findLongestWord() that takes an array of words and returns the length of the longest one.</h4>
+    <input type="text" id="words" placeholder="Enter words separated by commas">
+    <button onclick="findLongestWord()">Find the longest word</button>
+    <p id="result8"></p>
+    <script>
+        function findLongestWord() {
+            var words = document.getElementById("words").value;
+            var words1 = words.split(",");
+            var longest = 0;
+            for (var i = 0; i < words1.length; i++) {
+                if (words1[i].length > longest) {
+                    longest = words1[i].length;
+                }
+            }
+            document.getElementById("result8").innerHTML = "The length of the longest word is: " + longest;
+        }
+    </script>
+
+    <h4>Q9. Write a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.</h4>
+    <input type="text" id="words1" placeholder="Enter words separated by commas">
+    <input type="text" id="i" placeholder="Enter an integer">
+    <button onclick="filterLongWords()">Find the words longer than i</button>
+    <p id="result9"></p>
+    <script>
+        function filterLongWords() {
+            var words2 = document.getElementById("words1").value;
+            var i = parseInt(document.getElementById("i").value);
+            var words3 = words2.split(",");
+            var longWords = [];
+            for (var j = 0; j < words3.length; j++) {
+                if (words3[j].length > i) {
+                    longWords.push(words3[j]);
+                }
+            }
+            document.getElementById("result9").innerHTML = "The words longer than " + i + " are: " + longWords;
+        }
+    </script>
+
+    <h4>Q10. Write a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").</h4>
+    <input type="text" id="str1" placeholder="Enter a string">
+    <button onclick="charFreq()">Find the frequency of characters</button>
+    <p id="result10"></p>
+    <script>
+        function charFreq() {
+            var str4 = document.getElementById("str1").value;
+            var freq = {};
+            for (var k = 0; k < str4.length; k++) {
+                if (freq[str4[k]]) {
+                    freq[str4[k]]++;
+                } else {
+                    freq[str4[k]] = 1;
+                }
+            }
+            document.getElementById("result10").innerHTML = "The frequency of characters is: " + JSON.stringify(freq);
+        }
+    </script>
+
+    <h4>Q11. Design a calculator using java script.</h4>
+    <input type="text" id="num6" placeholder="Enter first number">
+    <input type="text" id="num7" placeholder="Enter second number">
+    <button onclick="add()">Add</button>
+    <button onclick="subtract()">Subtract</button>
+    <button onclick="multiply1()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+    <p id="result11"></p>
+    <script>
+        function add() {
+            var num6 = parseInt(document.getElementById("num6").value);
+            var num7 = parseInt(document.getElementById("num7").value);
+            var sum1 = num6 + num7;
+            document.getElementById("result11").innerHTML = "The sum is: " + sum1;
+        }
+        function subtract() {
+            var num6 = parseInt(document.getElementById("num6").value);
+            var num7 = parseInt(document.getElementById("num7").value);
+            var difference = num6 - num7;
+            document.getElementById("result11").innerHTML = "The difference is: " + difference;
+        }
+        function multiply1() {
+            var num6 = parseInt(document.getElementById("num6").value);
+            var num7 = parseInt(document.getElementById("num7").value);
+            var product1 = num6 * num7;
+            document.getElementById("result11").innerHTML = "The product is: " + product1;
+        }
+        function divide() {
+            var num6 = parseInt(document.getElementById("num6").value);
+            var num7 = parseInt(document.getElementById("num7").value);
+            var quotient = num6 / num7;
+            document.getElementById("result11").innerHTML = "The quotient is: " + quotient;
+        }
+    </script>
+
+    <h4>Q12. Write a script that asks the user for a series of names until the user hits the cancel button. The script then sorts the names in alphabetical order and prints the names in an ordered list.</h4>
+    <button onclick="sortNames()">Enter names</button>
+    <p id="result12"></p>
+    <script>
+        function sortNames() {
+            var names = [];
+            var name;
+            while (name = prompt("Enter a name")) {
+                names.push(name);
+            }
+            names.sort();
+            document.getElementById("result12").innerHTML = "The names in alphabetical order are: " + names;
+        }
+    </script>
+
+    <h4>Q13. Write a script that asks the user how many random numbers they wish to generate. The script then generates the numbers and calculates the average of the numbers and returns the results to the user</h4>
+    <button onclick="generateNumbers()">Generate random numbers</button>
+    <p id="result13"></p>
+    <script>
+        function generateNumbers() {
+            var n = parseInt(prompt("How many random numbers do you wish to generate?"));
+            var numbers2 = [];
+            var sum2 = 0;
+            for (var l = 0; l < n; l++) {
+                numbers2[l] = Math.floor(Math.random() * 100);
+                sum2 += numbers2[l];
+            }
+            var average = sum2 / n;
+            document.getElementById("result13").innerHTML = "The random numbers are: " + numbers2 + "<br>The average of the numbers is: " + average;
+        }
+    </script>
+
+    <h4>Q14. Create registration form webpage for your site with the following form fields - Name, User name, password and confirm password (both must be the same), year of birth and email, a checkbox for the use to select that he/she agree to the terms and conditions of the website
+    Validations to do on this page:
+        check if both the passwords are the same.
+        check if user name, password, confirm password, email are not empty and checkbox is selected.
+        Password and confirm password are the same.
+        Email is in the correct format.
+        Year of birth should be between 1900 and 2000 and must be four digits only.
+    </h4>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="username">User name:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="confirmPassword">Confirm password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+        <label for="yearOfBirth">Year of birth:</label>
+        <input type="text" id="yearOfBirth" name="yearOfBirth" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the terms and conditions of the website</label><br><br>
+        <button type="button" onclick="validate()">Submit</button>
+    </form>
+    <p id="result14"></p>
+    <script>
+        function validate() {
+            var name1 = document.getElementById("name").value;
+            var username1 = document.getElementById("username").value;
+            var password1 = document.getElementById("password").value;
+            var confirmPassword1 = document.getElementById("confirmPassword").value;
+            var yearOfBirth1 = document.getElementById("yearOfBirth").value;
+            var email1 = document.getElementById("email").value;
+            var terms1 = document.getElementById("terms").checked;
+            if (password1 != confirmPassword1) {
+                document.getElementById("result14").innerHTML = "The passwords do not match";
+            } else if (name1 == "" || username1 == "" || password1 == "" || confirmPassword1 == "" || yearOfBirth1 == "" || email1 == "" || !terms1) {
+                document.getElementById("result14").innerHTML = "Please fill in all the fields and agree to the terms and conditions";
+            } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email1)) {
+                document.getElementById("result14").innerHTML = "Please enter a valid email address";
+            } else if (yearOfBirth1.length != 4 || yearOfBirth1 < 1900 || yearOfBirth1 > 2000) {
+                document.getElementById("result14").innerHTML = "Please enter a valid year of birth";
+            } else {
+                document.getElementById("result14").innerHTML = "Registration successful";
+            }
+        }
+    </script>
+
+    <h4>Q15. Write the XHTML tag and event handler to pop up an alert message that says "Welcome" when the user clicks a button.</h4>
+    <button onclick="alert('Welcome')">Click me</button>
+
+    <h4>Q16. Write the XHTML tag and event handler to pop up an alert message that says "Welcome" when the user moves the mouse pointer over a link that says "Hover for a welcome message".</h4>
+    <a href="#" onmouseover="alert('Welcome')">Hover for a welcome message</a>
+
+    <h4>Q17. Create a form that asks the user to enter their name, age, and hometown. When the user presses the Submit button, call a JavaScript function. The JavaScript function should perform the following actions:
+        display the user's name and year they were born (depending on actual date of birth) on the webpage below the form.
+        display a link to Google (or Bing) search results for the name of their hometown.</h4>
+    <form>
+        <label for="name1">Name:</label>
+        <input type="text" id="name1" name="name1" required><br><br>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required><br><br>
+        <label for="hometown">Hometown:</label>
+        <input type="text" id="hometown" name="hometown" required><br><br>
+        <button type="button" onclick="displayDetails()">Submit</button>
+    </form>
+    <p id="result17"></p>
+    <script>
+        function displayDetails() {
+            var name2 = document.getElementById("name1").value;
+            var age1 = parseInt(document.getElementById("age").value);
+            var hometown1 = document.getElementById("hometown").value;
+            var yearOfBirth2 = new Date().getFullYear() - age1;
+            document.getElementById("result17").innerHTML = "Your name is " + name2 + " and you were born in " + yearOfBirth2 + "<br><a href='https://www.google.com/search?q=" + hometown1 + "' target='_blank'>Search for " + hometown1 + "</a>";
+        }
+    </script>
+
+    <h4>Q18. Use JavaScript to create a rollover image. Choose two images with the same size. Display one image. When the mouse passes over the image, change it to the second image. When the mouse leaves the image, change back to the original image.</h4>
+    <img alt="" height="100" width="100" src="image1.png" onmouseover="this.src='image2.png'" onmouseout="this.src='image1.png'">
+
+</body>
+</html>

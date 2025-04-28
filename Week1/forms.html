@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Simple Form</title>
+</head>
+<body>
+    <h1>A Simple Form</h1>
+    <h2>Form Fundamentals</h2>
+    <form autocomplete="on">
+        <!-- Customer Info Fieldset -->
+        <fieldset>
+            <legend>Customer Info</legend>
+
+            <!-- Name Field -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required autofocus />
+            <br/>
+
+            <!-- Telephone Field -->
+            <label for="telephone">Telephone:</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="Pattern 1-234-567-8910" pattern="\d{1}-\d{3}-\d{3}-\d{4}" required />
+            <br/>
+
+            <!-- Email Address Field -->
+            <label for="email">Email address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" multiple required />
+        </fieldset>
+
+        <!-- Books Fieldset -->
+        <fieldset>
+            <legend>Books</legend>
+
+            <!-- Book Selection Field -->
+            <label for="book">Book:</label>
+            <input type="text" id="book" name="book" list="book-list" placeholder="Select a book" />
+            <datalist id="book-list">
+                <option value="Harry Potter">
+                <option value="The Hobbit">
+                <option value="1984">
+                <option value="To Kill a Mockingbird">
+                <option value="The Great Gatsby">
+            </datalist>
+            <br/>
+
+            <!-- Quantity Field -->
+            <label for="quantity">Quantity (Maximum 5):</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="5" required />
+        </fieldset>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

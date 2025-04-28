@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Names Alphabetically</title>
+</head>
+<body>
+    <h1>Sort Names Alphabetically</h1>
+    <p>Click the button below to start entering names.</p>
+    <button onclick="collectAndSortNames()">Enter Names</button>
+    <ol id="name-list"></ol>
+
+    <script>
+        // Function to collect names from the user, sort them, and display the result
+        function collectAndSortNames() {
+            const names = [];
+            let name;
+
+            while (true) {
+                name = prompt("Enter a name (or press Cancel to finish):");
+                if (name === null) {
+                    break; // User pressed Cancel
+                }
+                if (name.trim() !== "") {
+                    names.push(name.trim());
+                }
+            }
+
+            if (names.length > 0) {
+                names.sort((a, b) => a.localeCompare(b)); // Sort names alphabetically
+                const nameList = document.getElementById('name-list');
+                nameList.innerHTML = ""; // Clear previous list
+                names.forEach(name => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = name;
+                    nameList.appendChild(listItem);
+                });
+            } else {
+                alert("No names were entered.");
+            }
+        }
+    </script>
+</body>
+</html>

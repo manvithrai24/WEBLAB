@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Word Guessing Game</title>
+</head>
+<body>
+
+  <script>
+    // Global arrays
+    const wordLetters = ['F', 'O', 'X'];
+    let guessedLetters = Array(wordLetters.length).fill('_');
+
+    function guessLetter(guessedLetter) {
+      let letterFound = false;
+
+      for (let i = 0; i < wordLetters.length; i++) {
+        if (wordLetters[i].toUpperCase() === guessedLetter.toUpperCase()) {
+          guessedLetters[i] = wordLetters[i].toUpperCase();
+          letterFound = true;
+        }
+      }
+
+      console.log(`Current guessed letters: ${guessedLetters.join('')}`);
+
+      if (letterFound) {
+        console.log(`Congratulations! You found a new letter: ${guessedLetter.toUpperCase()}`);
+      }
+
+      if (!guessedLetters.includes('_')) {
+        console.log("Congratulations! You guessed the word: " + wordLetters.join(''));
+      }
+    }
+
+    console.log("Let's start guessing!");
+    console.log(`The word has ${wordLetters.length} letters: ${guessedLetters.join('')}`);
+
+    // Pretend we don't know the word and call guessLetter multiple times
+    guessLetter('a');
+    guessLetter('F');
+    guessLetter('b');
+    guessLetter('o');
+    guessLetter('x');
+    guessLetter('x'); // Guessing again to see no extra congrats
+    guessLetter('c');
+  </script>
+
+</body>
+</html>

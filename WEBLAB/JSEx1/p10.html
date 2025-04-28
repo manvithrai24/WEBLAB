@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Frequency</title>
+</head>
+<body>
+    <h1>Character Frequency Counter</h1>
+    <p>Enter a string to see the frequency of its characters:</p>
+    <form id="frequency-form">
+        <input type="text" id="input-string" placeholder="Enter string" required>
+        <button type="button" onclick="countCharFrequency()">Count Frequency</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        // Function to calculate character frequency
+        function charFreq(str) {
+            const frequency = {};
+            for (const char of str) {
+                frequency[char] = (frequency[char] || 0) + 1;
+            }
+            return frequency;
+        }
+
+        // Function to handle user input and display the result
+        function countCharFrequency() {
+            const inputStr = document.getElementById('input-string').value;
+
+            if (inputStr) {
+                const frequencies = charFreq(inputStr);
+                const frequencyEntries = Object.entries(frequencies)
+                    .map(([char, count]) => `"${char}": ${count}`)
+                    .join(', ');
+                document.getElementById('result').textContent = `Character frequencies: { ${frequencyEntries} }`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter a valid string!';
+            }
+        }
+    </script>
+</body>
+</html>

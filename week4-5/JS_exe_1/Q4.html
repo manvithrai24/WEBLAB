@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+</head>
+<body>
+    <h1>Translator</h1>
+    <textarea id="inputText" placeholder="Enter text here"></textarea>
+    <button id="translateButton">Translate</button>
+    <h2>Translated Text:</h2>
+    <p id="outputText"></p>
+
+    <script>
+        function translate(text) {
+            const vowels = "aeiouAEIOU";
+            let translated = "";
+
+            for (let char of text) {
+                if (char.match(/[a-zA-Z]/) && !vowels.includes(char)) { 
+                    translated += char + 'o' + char; 
+                } else {
+                    translated += char; 
+                }
+            }
+
+            return translated;
+        }
+
+        document.getElementById("translateButton").addEventListener("click", function() {
+            const inputText = document.getElementById("inputText").value;
+            const outputText = translate(inputText);
+            document.getElementById("outputText").innerText = outputText;
+        });
+    </script>
+</body>
+</html>

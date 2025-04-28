@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Card Translator</title>
+</head>
+<body>
+    <h1>Christmas Card Translator</h1>
+    <p>Enter your Christmas message in English:</p>
+    <form id="translation-form">
+        <input type="text" id="english-text" placeholder="Enter text" required>
+        <button type="button" onclick="translateText()">Translate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        // Bilingual lexicon
+        const lexicon = {
+            "merry": "god",
+            "christmas": "jul",
+            "and": "och",
+            "happy": "gott",
+            "new": "nytt",
+            "year": "år"
+        };
+
+        // Translation function
+        function translate(text) {
+            return text.split(' ').map(word => lexicon[word.toLowerCase()] || word).join(' ');
+        }
+
+        // Function to handle user input and display the result
+        function translateText() {
+            const inputText = document.getElementById('english-text').value;
+
+            if (inputText) {
+                const translated = translate(inputText);
+                document.getElementById('result').textContent = `Translated text: ${translated}`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter a valid message!';
+            }
+        }
+    </script>
+</body>
+</html>

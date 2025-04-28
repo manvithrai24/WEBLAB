@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>notBad Function</title>
+</head>
+<body>
+
+  <script>
+    function notBad(str) {
+      const notIndex = str.indexOf('not');
+      const badIndex = str.indexOf('bad');
+
+      if (notIndex !== -1 && badIndex !== -1 && badIndex > notIndex) {
+        // 'bad' follows 'not', so replace the substring
+        return str.substring(0, notIndex) + 'good' + str.substring(badIndex + 3);
+      } else {
+        // 'not' and 'bad' not found in the correct sequence, return the original string
+        return str;
+      }
+    }
+
+    // Example usage:
+    const result1 = notBad('This dinner is not that bad!');
+    console.log(`notBad('This dinner is not that bad!'): '${result1}'`);
+    // Output: notBad('This dinner is not that bad!'): 'This dinner is good!'
+
+    const result2 = notBad('This movie is not so bad!');
+    console.log(`notBad('This movie is not so bad!'): '${result2}'`);
+    // Output: notBad('This movie is not so bad!'): 'This movie is good!'
+
+    const result3 = notBad('This dinner is bad!');
+    console.log(`notBad('This dinner is bad!'): '${result3}'`);
+    // Output: notBad('This dinner is bad!'): 'This dinner is bad!'
+
+    const result4 = notBad('The food is not good.');
+    console.log(`notBad('The food is not good.'): '${result4}'`);
+    // Output: notBad('The food is not good.'): 'The food is not good.'
+
+    const result5 = notBad('It is bad but not really.');
+    console.log(`notBad('It is bad but not really.'): '${result5}'`);
+    // Output: notBad('It is bad but not really.'): 'It is bad but not really.'
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form id="registration-form" onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" placeholder="Enter your name"><br><br>
+
+        <label for="username">User Name:</label><br>
+        <input type="text" id="username" placeholder="Enter your user name"><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" placeholder="Enter your password"><br><br>
+
+        <label for="confirm-password">Confirm Password:</label><br>
+        <input type="password" id="confirm-password" placeholder="Confirm your password"><br><br>
+
+        <label for="year-of-birth">Year of Birth:</label><br>
+        <input type="number" id="year-of-birth" placeholder="Enter your year of birth"><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" placeholder="Enter your email"><br><br>
+
+        <input type="checkbox" id="terms"> I agree to the terms and conditions<br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p id="error-message" class="error"></p>
+
+    <script>
+     
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const yearOfBirth = parseInt(document.getElementById('year-of-birth').value);
+            const email = document.getElementById('email').value.trim();
+            const terms = document.getElementById('terms').checked;
+
+            let errorMessage = '';
+
+            
+            if (!name || !username || !password || !confirmPassword || !email) {
+                errorMessage = 'All fields are required.';
+            }
+            
+            else if (password !== confirmPassword) {
+                errorMessage = 'Passwords do not match.';
+            }
+            
+            else if (isNaN(yearOfBirth) || yearOfBirth < 1900 || yearOfBirth > 2000) {
+                errorMessage = 'Year of birth must be between 1900 and 2000.';
+            }
+          
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorMessage = 'Invalid email format.';
+            }
+            
+            else if (!terms) {
+                errorMessage = 'You must agree to the terms and conditions.';
+            }
+
+           
+            if (errorMessage) {
+                document.getElementById('error-message').textContent = errorMessage;
+                return false; 
+            }
+
+            alert('Registration successful!');
+            return true; 
+        }
+    </script>
+</body>
+</html>

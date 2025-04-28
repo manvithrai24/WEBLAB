@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Movie Database</title>
+</head>
+<body>
+
+  <script>
+    const favoriteMovie = {
+      title: 'Puff the Magic Dragon',
+      duration: 30, // in minutes
+      stars: ['Puff', 'Jackie', 'Living Sneezes']
+    };
+
+    function printMovieInfo(movie) {
+      const starsString = movie.stars.join(', ');
+      console.log(`${movie.title} lasts for ${movie.duration} minutes. Stars: ${starsString}.`);
+    }
+
+    printMovieInfo(favoriteMovie);
+  </script>
+
+</body>
+</html>

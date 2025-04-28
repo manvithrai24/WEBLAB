@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <form id="user-form" onsubmit="handleForm(event)">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" placeholder="Enter your name" required><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" placeholder="Enter your age" required><br><br>
+
+        <label for="hometown">Hometown:</label><br>
+        <input type="text" id="hometown" placeholder="Enter your hometown" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        
+        function handleForm(event) {
+            event.preventDefault(); 
+
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+            const hometown = document.getElementById('hometown').value.trim();
+            const currentYear = new Date().getFullYear();
+            const birthYear = currentYear - age;
+
+            const resultDiv = document.getElementById('result');
+
+            if (!name || isNaN(age) || !hometown) {
+                resultDiv.innerHTML = '<p class="error">Please fill out all fields correctly!</p>';
+                return;
+            }
+
+            const userDetails = `<p><strong>Name:</strong> ${name}<br><strong>Year of Birth:</strong> ${birthYear}</p>`;
+            
+            const searchLink = `<p><strong>Search for hometown:</strong> 
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(hometown)}" target="_blank">
+                                Search for "${hometown}"</a></p>`;
+
+            resultDiv.innerHTML = userDetails + searchLink;
+        }
+    </script>
+</body>
+</html>

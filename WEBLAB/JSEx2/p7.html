@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>pluralize Function</title>
+</head>
+<body>
+
+  <script>
+    function pluralize(noun, number) {
+      if (number === 1) {
+        return `${number} ${noun}`;
+      } else if (noun === 'sheep' || noun === 'geese') {
+        // Handle collective nouns
+        if (noun === 'sheep') {
+          return `${number} sheep`;
+        } else if (noun === 'geese') {
+          return `${number} geese`;
+        }
+      } else {
+        return `${number} ${noun}s`;
+      }
+    }
+
+    // Test cases:
+    console.log(pluralize('cat', 5));   // Output: 5 cats
+    console.log(pluralize('dog', 1));   // Output: 1 dog
+    console.log(pluralize('person', 2)); // Output: 2 persons
+    console.log(pluralize('sheep', 3));  // Output: 3 sheep
+    console.log(pluralize('goose', 2));  // Output: 2 gooses
+    console.log(pluralize('sheep', 1));  // Output: 1 sheep
+    console.log(pluralize('goose', 1));  // Output: 1 goose
+
+    // Bonus test cases:
+    console.log(pluralize('sheep', 10)); // Output: 10 sheep
+    console.log(pluralize('goose', 4));  // Output: 4 geese
+  </script>
+
+</body>
+</html>

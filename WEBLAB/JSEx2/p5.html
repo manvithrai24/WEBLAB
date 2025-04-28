@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>verbing Function</title>
+</head>
+<body>
+
+  <script>
+    function verbing(str) {
+      if (str.length >= 3) {
+        if (str.endsWith('ing')) {
+          return str + 'ly';
+        } else {
+          return str + 'ing';
+        }
+      } else {
+        return str;
+      }
+    }
+
+    // Example usage:
+    const result1 = verbing('swim');
+    console.log(`verbing('swim'): '${result1}'`); // Output: verbing('swim'): 'swimming'
+
+    const result2 = verbing('swimming');
+    console.log(`verbing('swimming'): '${result2}'`); // Output: verbing('swimming'): 'swimmingly'
+
+    const result3 = verbing('go');
+    console.log(`verbing('go'): '${result3}'`);   // Output: verbing('go'): 'go'
+
+    const result4 = verbing('acting');
+    console.log(`verbing('acting'): '${result4}'`); // Output: verbing('acting'): 'actingly'
+
+    const result5 = verbing('be');
+    console.log(`verbing('be'): '${result5}'`);   // Output: verbing('be'): 'be'
+  </script>
+
+</body>
+</html>

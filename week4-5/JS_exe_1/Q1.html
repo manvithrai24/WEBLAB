@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab Exercises</title>
+</head>
+<body>
+    <h3>q1</h3>
+    <input type="text" id="num1" placeholder="Enter first number">
+    <input type="text" id="num2" placeholder="Enter second number">
+    <button onclick="findMax()">Find the largest number</button>
+    <p id="result1"></p>
+    <script>
+        function max(num1, num2) {
+            if (num1 > num2) {
+                return num1; // Return the larger number
+            } else {
+                return num2; // Return the larger number
+            }
+        }
+
+        function findMax() {
+            // Get the values from the input fields
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            
+            // Check if the inputs are valid numbers
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("result1").innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            // Call the max function and display the result
+            var largest = max(num1, num2);
+            document.getElementById("result1").innerHTML = "The largest number is: " + largest;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollover Image</title>
+    <style>
+        img {
+            width: 300px; 
+            height: 200px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Rollover Image Effect</h1>
+    <p>Hover your mouse over the image to see the effect!</p>
+    <img 
+        src="image1.jpg" 
+        alt="Original Image" 
+        id="rollover-image"
+        onmouseover="changeImage('image2.jpg')" 
+        onmouseout="changeImage('image1.jpg')"
+    />
+
+    <script>
+        
+        function changeImage(newSrc) {
+            document.getElementById('rollover-image').src = newSrc;
+        }
+    </script>
+</body>
+</html>

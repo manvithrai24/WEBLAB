@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rövarspråket Translator</title>
+</head>
+<body>
+    <h1>Rövarspråket Translator</h1>
+    <p>Enter a text to translate into "rövarspråket":</p>
+    <form id="rovarspraket-form">
+        <input type="text" id="text" placeholder="Enter text" required>
+        <button type="button" onclick="translateText()">Translate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        
+        function translate(text) {
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            let translated = '';
+
+            for (const char of text) {
+                if (/[a-z]/i.test(char) && !vowels.includes(char.toLowerCase())) {
+                    translated += char + 'o' + char;
+                } else {
+                    translated += char;
+                }
+            }
+
+            return translated;
+        }
+
+        function translateText() {
+            const text = document.getElementById('text').value;
+            const result = translate(text);
+            document.getElementById('result').textContent = `Translated text: ${result}`;
+        }
+    </script>
+</body>
+</html>

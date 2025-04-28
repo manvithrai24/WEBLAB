@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q5 sum, multiply</title>
+</head>
+<body>
+   <input type="text" id="numbers" placeholder="Enter num by commas">
+    <button onclick="sum()">Find the sum</button>
+    <button onclick="multiply()">Find the product</button>
+    <p id="res"></p>
+    <script>
+        function sum() {
+            var num = document.getElementById("numbers").value;
+            var numarray= num.split(",");
+            var sum = 0;
+            for (var i = 0; i < numarray.length; i++) {
+                sum += parseInt(numarray[i]);
+            }
+            document.getElementById("res").innerHTML = "sum : " + sum;
+        }
+        function multiply() {
+            var num = document.getElementById("numbers").value;
+            var numarray = num.split(",");
+            var product = 1;
+            for (var i = 0; i <numarray.length; i++) {
+                product *= parseInt(numarray[i]);
+            }
+            document.getElementById("res").innerHTML = "product: " + product;
+        }
+    </script>
+</body>
+</html>

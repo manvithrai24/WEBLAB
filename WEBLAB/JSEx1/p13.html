@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+    <p>Enter the number of random numbers you wish to generate:</p>
+    <form id="random-number-form">
+        <input type="number" id="count" placeholder="Enter count" required>
+        <button type="button" onclick="generateRandomNumbers()">Generate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        // Function to generate random numbers and calculate the average
+        function generateRandomNumbers() {
+            const count = parseInt(document.getElementById('count').value);
+
+            if (!isNaN(count) && count > 0) {
+                const numbers = [];
+                let sum = 0;
+
+                for (let i = 0; i < count; i++) {
+                    const randomNum = Math.random() * 100; // Generate a random number between 0 and 100
+                    numbers.push(randomNum);
+                    sum += randomNum;
+                }
+
+                const average = sum / count;
+
+                document.getElementById('result').innerHTML = `
+                    Generated numbers: ${numbers.map(num => num.toFixed(2)).join(', ')}<br>
+                    Average: ${average.toFixed(2)}
+                `;
+            } else {
+                document.getElementById('result').textContent = 'Please enter a valid positive number!';
+            }
+        }
+    </script>
+</body>
+</html>

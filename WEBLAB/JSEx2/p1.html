@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Functions</title>
+</head>
+<body>
+
+  <script>
+    function squareNumber(number) {
+      const squared = number * number;
+      console.log(`The result of squaring the number ${number} is ${squared}.`);
+      return squared;
+    }
+
+    function halfNumber(number) {
+      const halved = number / 2;
+      console.log(`Half of ${number} is ${halved}.`);
+      return halved;
+    }
+
+    function percentOf(num1, num2) {
+      const percentage = (num1 / num2) * 100;
+      console.log(`${num1} is ${percentage}% of ${num2}.`);
+      return percentage;
+    }
+
+    function areaOfCircle(radius) {
+      const area = Math.PI * radius * radius;
+      console.log(`The area for a circle with radius ${radius} is ${area}.`);
+      return area;
+    }
+
+    // Bonus: Round the result to two decimal places
+    function areaOfCircleRounded(radius) {
+      const area = Math.PI * radius * radius;
+      const roundedArea = parseFloat(area.toFixed(2));
+      console.log(`The area for a circle with radius ${radius} is ${roundedArea}.`);
+      return roundedArea;
+    }
+
+    function performOperations(number) {
+      console.log(`\nPerforming operations on the number: ${number}`);
+
+      const halvedResult = halfNumber(number);
+      console.log(`Half result: ${halvedResult}`);
+
+      const squaredHalvedResult = squareNumber(halvedResult);
+      console.log(`Squared half result: ${squaredHalvedResult}`);
+
+      const circleArea = areaOfCircleRounded(squaredHalvedResult);
+      console.log(`Area of circle with radius ${squaredHalvedResult}: ${circleArea}`);
+
+      const percentageOfArea = percentOf(circleArea, squaredHalvedResult);
+      console.log(`The area is ${percentageOfArea}% of the squared half result.`);
+    }
+
+    // Example usage:
+    squareNumber(3);
+    halfNumber(5);
+    percentOf(2, 4);
+    areaOfCircle(2);
+    areaOfCircleRounded(2);
+    performOperations(10);
+  </script>
+
+</body>
+</html>

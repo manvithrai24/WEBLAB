@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Long Words</title>
+</head>
+<body>
+    <h1>Filter Words Longer Than Given Length</h1>
+    <p>Enter words separated by commas and an integer to filter words longer than the integer:</p>
+    <form id="filter-form">
+        <label for="words">Words (e.g., apple,banana,cherry):</label><br>
+        <input type="text" id="words" placeholder="Enter words" required><br><br>
+
+        <label for="length">Integer (e.g., 5):</label><br>
+        <input type="number" id="length" placeholder="Enter length" required><br><br>
+
+        <button type="button" onclick="filterWords()">Filter Words</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        // Function to filter words longer than a given integer
+        function filterLongWords(words, i) {
+            return words.filter(word => word.length > i);
+        }
+
+        // Function to handle user input and display the result
+        function filterWords() {
+            const wordsInput = document.getElementById('words').value;
+            const lengthInput = parseInt(document.getElementById('length').value);
+
+            if (wordsInput && !isNaN(lengthInput)) {
+                const wordsArray = wordsInput.split(',').map(word => word.trim());
+                const filteredWords = filterLongWords(wordsArray, lengthInput);
+
+                document.getElementById('result').textContent = `Filtered words: ${filteredWords.join(', ')}`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter valid inputs!';
+            }
+        }
+    </script>
+</body>
+</html>

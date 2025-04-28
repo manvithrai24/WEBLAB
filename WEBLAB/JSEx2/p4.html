@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>fixStart Function</title>
+</head>
+<body>
+
+  <script>
+    function fixStart(str) {
+      if (str.length <= 1) {
+        return str; // Nothing to replace if the string has 0 or 1 character
+      }
+
+      const firstChar = str[0];
+      let result = firstChar; // Start with the first character
+
+      // Iterate through the rest of the string (starting from the second character)
+      for (let i = 1; i < str.length; i++) {
+        if (str[i] === firstChar) {
+          result += '*'; // Replace with '*' if it matches the first character
+        } else {
+          result += str[i]; // Keep the original character if it doesn't match
+        }
+      }
+
+      return result;
+    }
+
+    // Example usage:
+    const result1 = fixStart('babble');
+    console.log(`fixStart('babble'): '${result1}'`); // Output: fixStart('babble'): 'ba**le'
+
+    const result2 = fixStart('google');
+    console.log(`fixStart('google'): '${result2}'`); // Output: fixStart('google'): 'goo*le'
+
+    const result3 = fixStart('a');
+    console.log(`fixStart('a'): '${result3}'`);   // Output: fixStart('a'): 'a'
+
+    const result4 = fixStart('xyz');
+    console.log(`fixStart('xyz'): '${result4}'`); // Output: fixStart('xyz'): 'xyz'
+  </script>
+
+</body>
+</html>

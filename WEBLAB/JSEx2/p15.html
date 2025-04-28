@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Card Validator</title>
+</head>
+<body>
+
+  <script>
+    function validateCreditCard(cardNumber) {
+      const cleanedNumber = cardNumber.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+
+      if (cleanedNumber.length !== 16) {
+        return { valid: false, number: cardNumber, error: 'wrong_length' };
+      }
+
+      if (!/^\d+$/.test(cleanedNumber)) {
+        return { valid: false, number: cardNumber, error: 'invalid_characters' };
+      }
+
+      const firstDigit = cleanedNumber[0];
+      if (cleanedNumber.split('').every(digit => digit === firstDigit)) {
+        return { valid: false, number: cardNumber, error: 'only_one_digit_type' };
+      }
+
+      const lastDigit = parseInt(cleanedNumber[15], 10);
+      if (lastDigit % 2 !== 0) {
+        return { valid: false, number: cardNumber, error: 'odd_final_digit' };
+      }
+
+      let sum = 0;
+      for (let i = 0; i < cleanedNumber.length; i++) {
+        sum += parseInt(cleanedNumber[i], 10);
+      }
+
+      if (sum <= 16) {
+        return { valid: false, number: cardNumber, error: 'sum_less_than_16' };
+      }
+
+      return { valid: true, number: cardNumber };
+    }
+
+    // Test cases
+    const card1 = '9999-9999-8888-0000';
+    const card2 = '6666-6666-6666-1666';
+    const card3 = 'a923-3211-9c01-1112';
+    const card4 = '4444-4444-4444-4444';
+    const card5 = '1111-1111-1111-1110';
+    const card6 = '6666-6666-6666-6661';
+    const card7 = '1234567890123456'; // Valid
+    const card8 = '1234-5678-9012-3457'; // Invalid: odd final digit
+    const card9 = '1111-1111-1111-1112'; // Invalid: sum is 8
+    const card10 = '1212-1212-1212-1212'; // Valid
+
+    console.log(validateCreditCard(card1));
+    console.log(validateCreditCard(card2));
+    console.log(validateCreditCard(card3));
+    console.log(validateCreditCard(card4));
+    console.log(validateCreditCard(card5));
+    console.log(validateCreditCard(card6));
+    console.log(validateCreditCard(card7));
+    console.log(validateCreditCard(card8));
+    console.log(validateCreditCard(card9));
+    console.log(validateCreditCard(card10));
+  </script>
+
+</body>
+</html>

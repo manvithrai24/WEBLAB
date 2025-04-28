@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum and Multiply</title>
+</head>
+<body>
+    <h1>Sum and Multiply Numbers</h1>
+    <p>Enter numbers separated by commas (e.g., 1,2,3,4):</p>
+    <form id="math-form">
+        <input type="text" id="numbers" placeholder="Enter numbers" required>
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+    <p id="result-sum"></p>
+    <p id="result-multiply"></p>
+
+    <script>
+        
+        function sum(numbers) {
+            return numbers.reduce((acc, num) => acc + num, 0);
+        }
+
+        function multiply(numbers) {
+            return numbers.reduce((acc, num) => acc * num, 1);
+        }
+
+        function calculate() {
+            const input = document.getElementById('numbers').value;
+            const numberArray = input.split(',').map(num => parseFloat(num.trim()));
+
+            if (numberArray.every(num => !isNaN(num))) {
+                const totalSum = sum(numberArray);
+                const totalProduct = multiply(numberArray);
+
+                document.getElementById('result-sum').textContent = `Sum: ${totalSum}`;
+                document.getElementById('result-multiply').textContent = `Product: ${totalProduct}`;
+            } else {
+                document.getElementById('result-sum').textContent = 'Please enter valid numbers!';
+                document.getElementById('result-multiply').textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>
